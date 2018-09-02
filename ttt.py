@@ -33,16 +33,26 @@ def runmatch(x, o, n):
     return 1.0 * xwins / n, 1.0 * owins / n
 
 
-x = vtable.VTablePolicy(field.X, 0.1, 0.1)
-o = hardcoded.CenterCornersPolicy()
+x = vtable.VTablePolicy(field.X, 0.2, 0.2)
+o = hardcoded.BlockAttackPolicy(field.O)
 
-# Train Train Train
-print(runmatch(x, o, 100))
-print(runmatch(x, o, 100))
-print(runmatch(x, o, 100))
-print(runmatch(x, o, 100))
-print(runmatch(x, o, 100))
+# Train
+games_in_round = 10
+rounds = 10
+curiosity_multiplier = 0.5
 
-# Test
-x.curiosity = 0
-print(runmatch(x, o, 100))
+for i in range(rounds):
+    wins, losses = runmatch(x, o, games_in_round)
+    print('Round {} (of {} games): curiosity = {:5f}        '
+          'WIN: {:4.0%}, LOSE: {:4.0%}'
+          .format(i, games_in_round, x.curiosity, wins, losses))
+    x.curiosity *= curiosity_multiplier
+
+# Demo!
+print('')
+print('Demo:')
+log = field.rungame(x, o)
+fields = [field.posno_to_field(p) for p in log]
+print('|'.join(f[:3] for f in fields))
+print('|'.join(f[3:6] for f in fields))
+print('|'.join(f[6:] for f in fields))

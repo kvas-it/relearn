@@ -163,3 +163,11 @@ def test_rungame_cc():
     o = hc.CenterCornersPolicy()
     assert ttf.rungame(x, o) == [0, 81, 83, 92, 1550, 8111,
                                  8117, 8144, 8630, 10817]
+
+
+def test_rungame_ba():
+    """Run a game between two instances of BlockAttackPolicy."""
+    x = hc.BlockAttackPolicy(ttf.X)
+    o = hc.BlockAttackPolicy(ttf.O)
+    expect = [0, 81, 13203, 13932, 13950, 14193, 14247, 14250, 18624, 18625]
+    assert ttf.rungame(x, o) == expect
