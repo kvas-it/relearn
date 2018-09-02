@@ -8,7 +8,7 @@ setup(
     author='Vasily Kuznetsov',
     author_email='kvas.it@gmail.com',
     url='https://github.com/kvas-it/relearn',
-    packages=['relearn'],
+    packages=['relearn', 'relearn.ticktacktoe'],
     include_package_data=True,
     license='MIT',
     zip_safe=False,

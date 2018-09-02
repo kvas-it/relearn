@@ -1,7 +1,7 @@
 """Define ticktacktoe field."""
 
 X = 'X'
-O = 'O'
+O = 'O'  # flake8: noqa
 _ = ' '
 
 SYMBOLS = [_, X, O]
