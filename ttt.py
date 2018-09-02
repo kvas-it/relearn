@@ -43,7 +43,7 @@ curiosity_multiplier = 0.5
 
 for i in range(rounds):
     wins, losses = runmatch(x, o, games_in_round)
-    print('Round {} (of {} games): curiosity = {:5f}        '
+    print('Round {} (of {} games): curiosity = {:5f}  '
           'WIN: {:4.0%}, LOSE: {:4.0%}'
           .format(i, games_in_round, x.curiosity, wins, losses))
     x.curiosity *= curiosity_multiplier
